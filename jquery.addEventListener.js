@@ -1,40 +1,61 @@
 (function($){
-    $.addEventListener = function(el, type, callback, scope, priority){
-        // To avoid scope issues, use 'base' instead of 'this'
-        // to reference this class from internal events and functions.
-        var base = this;
+    var _listeners = [];
 
-        // Access to jQuery and DOM versions of element
-        base.$el = $(el);
-        base.el = el;
+    $.fn.addEventListener = function(type, callback, scope)
+    {
+        this.on(type, callback);
+        _addEventListener(type, callback, scope);
+        return this;
+    }
+    $.fn.removeEventListener = function(type, callback, scope)
+    {
+        this.off(type, callback);
+        _removeEventListener(type, callback, scope);
+        return this;
+    }
 
-        // Add a reverse reference to the DOM object
-        base.$el.data("addEventListener", base);
+    function _addEventListener(type, callback, scope, useCapture, priority)
+    {
+        if (typeof priority === "undefined") { priority = 0; }
 
-        base.init = function(){
-            if( typeof( priority ) === "undefined" || priority === null ) priority = 0;
-
-            base.type = type;
-            base.callback = callback;
-            base.scope = scope;
-            base.priority = priority;
-
-            // Put your initialization code here
-        };
-
-        // Sample Function, Uncomment to use
-        // base.functionName = function(paramaters){
-        // 
-        // };
-
-        // Run initializer
-        base.init();
+        var list = _listeners[type];
+        if (list == null)
+        {
+            _listeners[type] = list = [];
+        }
+        var index = 0;
+        var listener;
+        var i = list.length;
+        while (--i > -1)
+        {
+            listener = list[i];
+            if (listener.c === callback && listener.s === scope && listener.e === this)
+            {
+                list.splice(i, 1);//If same callback and scope is found remove it. Then add the current one below.
+            }
+            else if (index === 0 && listener.pr < priority)
+            {
+                index = i + 1;
+            }
+        }
+        list.splice(index, 0, {c: callback, s: scope, e: this, pr: priority});
     };
 
-    $.fn.addEventListener = function(type, callback, scope, priority){
-        return this.each(function(){
-            (new $.addEventListener(this, type, callback, scope, priority));
-        });
+    function _removeEventListener(type, callback, scope, useCapture)
+    {
+        var list = _listeners[type];
+        if (list)
+        {
+            var i = list.length;
+            while (--i > -1)
+            {
+                if (list[i].c === callback && list[i].s === scope && list[i].e === this)
+                {
+                    list.splice(i, 1);
+                    break;
+                }
+            }
+        }
     };
 
 })(jQuery);
