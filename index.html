@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="jquery.addEventListener.js"></script>
+    <script>
+        $(document).ready(function() {
+            console.log( $('a'))
+            $('a').addEventListener('click', functionCall, this);
+
+            function functionCall() {
+                alert("kkkd")
+            }
+        })
+    </script>
+</head>
+<body>
+
+<a href="#">hey</a>
+<a href="#">how</a>
+</body>
+</html>

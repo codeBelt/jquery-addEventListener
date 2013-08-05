@@ -1,9 +1,5 @@
 (function($){
-    if(!$.codebelt){
-        $.codebelt = new Object();
-    };
-
-    $.codebelt.addEventListener = function(el, type, callback, scope, priority){
+    $.addEventListener = function(el, type, callback, scope, priority){
         // To avoid scope issues, use 'base' instead of 'this'
         // to reference this class from internal events and functions.
         var base = this;
@@ -13,7 +9,7 @@
         base.el = el;
 
         // Add a reverse reference to the DOM object
-        base.$el.data("codebelt.addEventListener", base);
+        base.$el.data("addEventListener", base);
 
         base.init = function(){
             if( typeof( priority ) === "undefined" || priority === null ) priority = 0;
@@ -35,9 +31,9 @@
         base.init();
     };
 
-    $.fn.codebelt_addEventListener = function(type, callback, scope, priority){
+    $.fn.addEventListener = function(type, callback, scope, priority){
         return this.each(function(){
-            (new $.codebelt.addEventListener(this, type, callback, scope, priority));
+            (new $.addEventListener(this, type, callback, scope, priority));
         });
     };
 

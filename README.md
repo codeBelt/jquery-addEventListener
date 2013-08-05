@@ -1,2 +1,2 @@
-jquery-addEventListener
+jquery addEventListener
 =======================
