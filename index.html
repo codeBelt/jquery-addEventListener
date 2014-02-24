@@ -1,27 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title></title>
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <!--<script src="jquery.addEventListener.js"></script>-->
-    <script src="temp.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#ctrl1').addEventListener('click', functionCall, this);
-//            $('a').removeEventListener('click', functionCall, this);
+    <meta charset="utf-8" />
 
-//            $('a').on('click', functionCall, this);
-//            $('a').off('click', functionCall, this);
+    <style>
+        .rect {
+            width: 200px;
+            height: 200px;
+            background-color: #00ff00;
+        }
 
-            function functionCall() {
-                alert("kkkd")
-            }
-        })
-    </script>
+        .rect.active {
+            background-color: #3c49ff;
+        }
+    </style>
 </head>
 <body>
+    <p>Click on the box. The current state is <span class="js-stateText">Enabled</span></p>
+    <div class="js-Square rect"></div>
 
-<a id="ctrl1" href="#">hey</a>
-<a href="#">how</a>
+    <button id="js-enableButton" class="enable">Enable</button>
+    <button id="js-disableButton" class="disable">Disable</button>
+
+    <script type="text/javascript" src="jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="jquery.eventListener.js"></script>
+    <script type="text/javascript" src="EventListenerApp.js"></script>
+
+    <script>
+        window.onload = function (event)
+        {
+            var app = new EventListenerApp('body');
+        }
+    </script>
 </body>
 </html>
