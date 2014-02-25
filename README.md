@@ -6,7 +6,7 @@ To get this to work you typically need to assign you bind function call(s) to a 
 
 The jQuery eventListener plugin makes it so you don't need to do this. Basically you can do everything the on and off methods does in jQuery. You'll just need to pass the class scope as the last argument. Check out the Example 2.
 
-Also check out the EventListenerApp sample code.
+Also check out the EventListenerApp sample code and/or example [http://codebelt.github.io/jquery-eventListener/](http://codebelt.github.io/jquery-eventListener/)
 
 ___Example 1 without plugin___
 
