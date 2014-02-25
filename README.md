@@ -2,7 +2,7 @@ jQuery eventListener plugin
 ===========================
 
 When creating JavaScript classes you will run into an issue where you cannot remove event listeners once you've added them.
-To get this to work you typically need to assign you bind function call(s) to a property on the class. You can see this in the Example 1 below in the setupHandlers method.
+To get this to work you typically need to assign your bind function call(s) to a property on the class. You can see this in the Example 1 below in the setupHandlers method.
 
 The jQuery eventListener plugin makes it so you don't need to do this. Basically you can do everything the on and off methods does in jQuery. You'll just need to pass the class scope as the last argument. Check out the Example 2.
 
