@@ -16,5 +16,13 @@
         "listener"
     ],
     "license": "MIT",
-    "homepage": "https://github.com/codeBelt/jquery-eventListener"
+    "homepage": "https://github.com/codeBelt/jquery-eventListener",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "./src/assets/vendor",
+        "test",
+        "tests"
+    ]
 }
