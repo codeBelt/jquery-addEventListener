@@ -26,20 +26,20 @@ DemoView.prototype.setupHandlers = function() {
 };
 
 DemoView.prototype.enable = function() {
-    if (this.isEnabled === true) return this;
+    if (this.isEnabled === true) { return this; }
     this.isEnabled = true;
 
-    this.$card.on('click', this.onClickHandler)
-    this.$card.on('mouseenter', this.onMouseEnterHandler)
+    this.$card.on('click', this.onClickHandler);
+    this.$card.on('mouseenter', this.onMouseEnterHandler);
     this.$card.on('mouseleave', this.onMouseLeaveHandler);
 };
 
 DemoView.prototype.disable = function() {
-    if (this.isEnabled === false) return this;
+    if (this.isEnabled === false) { return this; }
     this.isEnabled = false;
 
-    this.$card.off('click', this.onClickHandler)
-    this.$card.off('mouseenter', this.onMouseEnterHandler)
+    this.$card.off('click', this.onClickHandler);
+    this.$card.off('mouseenter', this.onMouseEnterHandler);
     this.$card.off('mouseleave', this.onMouseLeaveHandler);
 };
 
@@ -59,21 +59,21 @@ var DemoView = function() {
 };
 
 DemoView.prototype.enable = function() {
-    if (this.isEnabled === true) return this;
+    if (this.isEnabled === true) { return this; }
     this.isEnabled = true;
 
-    this.$card.addEventListener('click', this.onClickHandler, this)
-    this.$card.addEventListener('mouseenter', this.onMouseEnterHandler, this)
-    this.$card.addEventListener('mouseleave', this.onMouseLeaveHandler, this);
+    this.$card.addEventListener('click', this.onClick, this);
+    this.$card.addEventListener('mouseenter', this.onMouseEnter, this);
+    this.$card.addEventListener('mouseleave', this.onMouseLeave, this);
 };
 
 DemoView.prototype.disable = function() {
-    if (this.isEnabled === false) return this;
+    if (this.isEnabled === false) { return this; }
     this.isEnabled = false;
 
-    this.$card.removeEventListener('click', this.onClickHandler, this)
-    this.$card.removeEventListener('mouseenter', this.onMouseEnterHandler, this)
-    this.$card.removeEventListener('mouseleave', this.onMouseLeaveHandler, this);
+    this.$card.removeEventListener('click', this.onClick, this);
+    this.$card.removeEventListener('mouseenter', this.onMouseEnter, this);
+    this.$card.removeEventListener('mouseleave', this.onMouseLeave, this);
 };
 
 DemoView.prototype.onClick = function(event) {};
