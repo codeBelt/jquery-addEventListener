@@ -80,3 +80,33 @@ DemoView.prototype.onClick = function(event) {};
 DemoView.prototype.onMouseEnter = function(event) {};
 DemoView.prototype.onMouseLeave = function(event) {};
 ```
+
+**Add it to Your Project**
+
+```
+bower install jquery.eventListener
+```
+
+**RequireJS Example**
+Add the path to the **config.js** file:
+
+```
+require.config({
+    paths: {
+        ...
+        'jquery.eventListener': '../vendor/jquery.eventListener/src/jquery.eventListener',
+        ...
+    },
+    shim: {
+        'jquery.eventListener': {
+            exports: 'jquery.eventListener',
+            deps: ['jquery']
+        }
+    }
+});
+```
+
+**Require it in your main file:**
+```
+ require('jquery.eventListener');
+```
