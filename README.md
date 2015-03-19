@@ -88,6 +88,7 @@ bower install jquery.eventListener
 ```
 
 **RequireJS Example**
+
 Add the path to the **config.js** file:
 
 ```
